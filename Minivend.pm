@@ -1,6 +1,6 @@
 package Bundle::Minivend;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 1;
 
@@ -19,25 +19,31 @@ C<perl -MCPAN -e 'install Bundle::Minivend'>
 
 MD5
 
-Data::Dumper
+MIME::Base64
+
+Bundle::LWP
 
 Term::ReadKey
 
 Term::ReadLine::Perl
 
-Vend::Cart  # This is a module guaranteed to be in MiniVend, it
-            # will cause installation of the package
+Business::UPS
+
+SQL::Statement
+
+Storable
 
 =head1 DESCRIPTION
 
-This bundle includes MiniVend along with the modules which are nice
-to have with it.
+This bundle installs the prerequisites for MiniVend as well as some
+modules that are not strictly necessary.
 
 After installing this bundle, it is recommended that you quit the current
 session and then run MiniVend's C<makecat> program. That will give you the
 benefit of line completion and history.
 
-None of the bundled modules are really needed for MiniVend:
+None of the bundled modules are really needed for MiniVend, but
+some functions require on them and you will be limited without them.
 
 =over 4
 
@@ -46,11 +52,20 @@ This module is used to generate unique cache keys. If you don't have it,
 then keys will be computed with a checksum that has a very low but not
 infinitesimal chance of causing a cache conflict.
 
-=item Data::Dumper
-If you have this module and are able to complile the DumperX routine,
-session save speed increases by anywhere from 15-40%. Highly recommended
-for busy systems. Also, the output of MiniVend's session dump will be
-much more readable.
+=item Bundle::LWP
+Certain parts of these modules (URI::URL and MIME::Base64) are required
+for MiniVend's internal HTTP server. In addition, Data::Dumper makes the
+output of session dumps more readable.
+
+=item Storable
+If you have this module session save speed increases by anywhere from 25-60%.
+Highly recommended for busy systems. 
+
+=item Business::UPS
+Enables lookup of shipping costs directly from www.ups.com.
+
+=item SQL::Statement
+Enables SQL-style search query statements for MiniVend.
 
 =item Term::ReadKey
 Helps Term::ReadLine::Perl generate completions and editing.
