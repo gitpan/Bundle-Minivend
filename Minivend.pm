@@ -1,6 +1,6 @@
 package Bundle::Minivend;
 
-$VERSION = '0.02';
+$VERSION = '4.0';
 
 1;
 
@@ -8,8 +8,7 @@ __END__
 
 =head1 NAME
 
-Bundle::Minivend - A bundle of the modules nice to have for MiniVend,
-plus MiniVend itself;
+Bundle::Minivend - A nice to have modules for MiniVend
 
 =head1 SYNOPSIS
 
@@ -32,6 +31,10 @@ Business::UPS
 SQL::Statement
 
 Storable
+
+Safe::Hole
+
+DBI
 
 =head1 DESCRIPTION
 
@@ -74,6 +77,8 @@ Helps Term::ReadLine::Perl generate completions and editing.
 Gives you filename completion and command history in the makecat program.
 Not used otherwise.
 
+=item DBI
+Necessary if you want to use MySQL or some other SQL database.
 
 =head1 AUTHOR
 
